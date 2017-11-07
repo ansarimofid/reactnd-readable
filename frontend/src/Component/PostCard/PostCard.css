@@ -1,0 +1,25 @@
+.uk-card.post-card {
+    box-shadow: none;
+    /*border-bottom: 1px solid rgba(0, 0, 0, 0.12);*/
+
+}
+
+.post-card-action .uk-icon {
+    margin-right: 4px;
+}
+
+.uk-icon.upvote-icon {
+    border: 1px solid #1d87f0;
+    color: #1d87f0;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.uk-icon.upvote-icon:hover {
+    background-color: #1d87f0;
+    color: white;
+}
+
+.post-card-action .votes {
+    margin-right: 16px;
+}
