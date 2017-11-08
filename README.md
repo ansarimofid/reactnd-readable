@@ -1,4 +1,4 @@
-# Readable API Server
+# React Readable App
 
 This is the Readable project which provides barebone for most common common app with add, edit, delete and create functions
 
