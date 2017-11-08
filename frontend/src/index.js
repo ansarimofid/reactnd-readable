@@ -11,7 +11,7 @@ import UIkit from 'uikit';
 import {Provider} from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {BrowserRouter} from 'react-router-dom'
 
 import reducer from './Reducers/index'
 
