@@ -37,7 +37,7 @@ function posts(state = {posts: []}, action) {
       return {...state, post: action.post};
 
     case POST_CREATE:
-      return {...state, post: action.post};
+      return {...state, post: action.post, goToPost: true};
 
     case POST_DELETE:
       return {...state, deleted: action.post};

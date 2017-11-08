@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {
   loadPostFull, loadPostComments, savePost, saveComment, createComment, deleteComment,
-  deletePost, voteComment, votePostFull
+  deletePost, voteComment, votePostFull, postDeleted
 } from "../../Actions/postAction";
 import {CommentList} from "../Comments/CommentList";
 
@@ -35,6 +35,7 @@ export class PostFull extends React.Component {
 
   onPostDelete() {
     this.props.deletePost(this.state.id);
+    this.props.history.replace('/');
   }
 
   onPostUpVote() {
@@ -152,10 +153,6 @@ export class PostFull extends React.Component {
   }
 
   render() {
-
-    if (this.props.deleted) {
-      this.props.history.replace('/');
-    }
 
     if (!this.props.post) {
       return (
