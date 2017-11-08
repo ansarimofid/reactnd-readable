@@ -4,6 +4,8 @@
 
 import uuid from 'uuid/v4';
 
+const host = 'http://localhost:3001';
+
 var myHeaders = new Headers({
   'Accept': 'application/json',
   'Authorization': 'token',
@@ -13,7 +15,7 @@ var myHeaders = new Headers({
 export default {
   getAllPost: () => {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:3001/posts', {method: 'GET', headers: myHeaders})
+      fetch(host + '/posts', {method: 'GET', headers: myHeaders})
         .then((response) => {
           response.json().then((posts) => {
             // console.log(posts);
@@ -24,7 +26,7 @@ export default {
   },
   getFullPost: (id) => {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:3001/posts/' + id, {method: 'GET', headers: myHeaders})
+      fetch(host + '/posts/' + id, {method: 'GET', headers: myHeaders})
         .then((response) => {
           console.log(response);
           response.json().then((post) => {
@@ -35,7 +37,7 @@ export default {
   },
   createPost: (title, author, body, category) => {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:3001/posts', {
+      fetch(host + '/posts', {
         method: 'POST', headers: myHeaders, body: JSON.stringify({
           id: uuid(),
           timestamp: Math.round((new Date()).getTime()),
@@ -50,7 +52,7 @@ export default {
   },
   getPostComments: (id) => {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:3001/posts/' + id + '/comments', {method: 'GET', headers: myHeaders})
+      fetch(host + '/posts/' + id + '/comments', {method: 'GET', headers: myHeaders})
         .then((response) => {
           response.json().then((comments) => resolve(comments))
         })
@@ -58,7 +60,7 @@ export default {
   },
   savePost: (id, title, body) => {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:3001/posts/' + id, {
+      fetch(host + '/posts/' + id, {
         method: 'PUT',
         headers: myHeaders,
         body: JSON.stringify({title, body})
@@ -70,13 +72,13 @@ export default {
   },
   deletePost: (id) => {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:3001/posts/' + id, {method: 'DELETE', headers: myHeaders})
+      fetch(host + '/posts/' + id, {method: 'DELETE', headers: myHeaders})
         .then(response => response.json().then((post) => resolve(post)))
     })
   },
   saveComment: (id, body) => {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:3001/comments/' + id, {method: 'PUT', headers: myHeaders, body: JSON.stringify({body})})
+      fetch(host + '/comments/' + id, {method: 'PUT', headers: myHeaders, body: JSON.stringify({body})})
         .then((response) => {
           response.json().then((comment) => resolve(comment))
         })
@@ -84,7 +86,7 @@ export default {
   },
   addComment: (parentId, body, author) => {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:3001/comments', {
+      fetch(host + '/comments', {
         method: 'POST', headers: myHeaders, body: JSON.stringify({
           id: uuid(),
           timestamp: Math.round((new Date()).getTime()),
@@ -100,7 +102,7 @@ export default {
   },
   deleteComment: (id) => {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:3001/comments/' + id, {method: 'DELETE', headers: myHeaders})
+      fetch(host + '/comments/' + id, {method: 'DELETE', headers: myHeaders})
         .then((response) => {
           response.json().then(comment => resolve(comment))
         })
@@ -108,7 +110,7 @@ export default {
   },
   voteComment: (id, option) => {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:3001/comments/' + id, {
+      fetch(host + '/comments/' + id, {
         method: 'POST',
         headers: myHeaders,
         body: JSON.stringify({option})
@@ -118,7 +120,7 @@ export default {
   },
   getCategories: () => {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:3001/categories', {method: 'GET', headers: myHeaders})
+      fetch(host + '/categories', {method: 'GET', headers: myHeaders})
         .then((response) => {
           response.json().then((categories) => {
             // console.log(categories.categories);
@@ -139,7 +141,7 @@ export default {
   },
   votePost: (id, option) => {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:3001/posts/' + id + '/', {
+      fetch(host + '/posts/' + id + '/', {
         method: 'POST',
         headers: myHeaders,
         body: JSON.stringify({option}),
