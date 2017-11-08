@@ -6,6 +6,9 @@ import {
 } from "../../Actions/postAction";
 import {CommentList} from "../Comments/CommentList";
 
+import './PostFull.css'
+import moment from 'moment'
+
 export class PostFull extends React.Component {
   constructor(props) {
     super(props);
@@ -56,17 +59,68 @@ export class PostFull extends React.Component {
       )
     } else {
       return (
-        <div>
-          <h2>{this.props.post.title}</h2>
-          <p>{this.props.post.body}</p>
-          <p>Vote: {this.props.post.voteScore}</p>
-          <button onClick={this.onPostEdit.bind(this)}>Edit</button>
-          <button onClick={this.onPostDelete.bind(this)}>Delete</button>
-          <button onClick={this.onPostUpVote.bind(this)}>Up Vote</button>
-          <button onClick={this.onPostDownVote.bind(this)}>Down Vote</button>
+        <div className="uk-flex">
+          <div className="uk-width-1-4@m"></div>
+          <div className="uk-width-1-2 post-details-wrapper">
+            <div className="back-btn-wrapper uk-text-left">
+              <button className="uk-button uk-button-primary uk-button-small" onClick={this.props.history.goBack}><span is uk-icon="icon: chevron-left"></span>Go Back</button>
+            </div>
+            <div className="uk-card uk-card-default uk-card-body post-card uk-text-left uk-padding-remove-bottom">
+              <div className="uk-card-badge uk-label">{this.props.post.category}</div>
+              <div className="card-header">
+            <span className="post-author uk-text-small">by <span className="uk-text-bold">{this.props.post.author}</span>
+            </span>
+                <span className="uk-text-small"> | </span>
+                <span className="time uk-text-small">{moment(this.props.post.timestamp,'x').fromNow()}</span>
+              </div>
+              <h3 className="uk-card-title uk-margin-small-top">{this.props.post.title}</h3>
+              <p>{this.props.post.body}</p>
+              <div className="post-card-action uk-flex">
+                <div className="votes">
+                  <button onClick={this.onPostUpVote.bind(this)} href=""><span is uk-icon="icon:chevron-up" className="upvote-icon"></span></button>
+                  <button  onClick={this.onPostDownVote.bind(this)} href=""><span is uk-icon="icon:chevron-down" className="upvote-icon"></span></button>
+                  <span>{this.props.post.voteScore}</span>
+                </div>
+                <div className="comments">
+                  <span is uk-icon="icon: comments"></span>
+                  <span>{this.props.post.commentCount}</span></div>
+              </div>
+              <div className="action uk-margin-medium-top uk-button-group">
+                <button className="uk-button uk-button-secondary uk-button-alt  uk-button-small uk-margin-small-right" onClick={this.onPostEdit.bind(this)}>Edit</button>
+                <button className="uk-button uk-button-danger uk-button-alt uk-button-small" onClick={this.onPostDelete.bind(this)}>Delete</button>
+              </div>
+              <hr/>
+            </div>
+          </div>
+          <div className="uk-width-1-4@m"></div>
         </div>
       )
     }
+  }
+
+  getComment() {
+    return(
+      <div className="uk-flex uk-margin-medium-top uk-margin-medium-bottom">
+        <div className="uk-width-1-4@m"></div>
+        <div className="uk-width-1-2@m">
+          <h3 className="uk-text-left">Comments</h3>
+          <CommentList comments={this.props.comments} onSave={this.onCommentSave.bind(this)}
+                       onDelete={this.deleteComment.bind(this)} onVote={this.voteComment.bind(this)}/>
+          <div className="new-comment uk-text-left">
+            <div className="uk-margin-small">
+              <textarea id="new-comment" className="uk-textarea" rows="3" placeholder="Add Your Comment"></textarea>
+            </div>
+
+            <div className="uk-margin-small">
+              <input className="uk-input uk-form-small" type="text" placeholder='Author Name' id='comment-author'/>
+            </div>
+
+            <button className="uk-button-primary uk-button uk-button-small" onClick={this.addComment.bind(this)}>Comment</button>
+          </div>
+        </div>
+        <div className="uk-width-1-4@m"></div>
+      </div>
+    )
   }
 
   addComment() {
@@ -109,13 +163,8 @@ export class PostFull extends React.Component {
 
     return (
       <div>
-        <button onClick={this.props.history.goBack}>Back</button>
         {this.getPost()}
-        <CommentList comments={this.props.comments} onSave={this.onCommentSave.bind(this)}
-                     onDelete={this.deleteComment.bind(this)} onVote={this.voteComment.bind(this)}/>
-        <textarea id='new-comment'/>
-        <input placeholder='Author' id='comment-author'/>
-        <button onClick={this.addComment.bind(this)}>Comment</button>
+        {this.getComment()}
       </div>
     )
   }

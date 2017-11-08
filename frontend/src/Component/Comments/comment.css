@@ -1,0 +1,21 @@
+.comment-wrapper {
+    border-left: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+.comment-wrapper p {
+    margin-bottom: 8px;
+}
+
+.comment-action {
+    margin-top: 8px;
+}
+
+.comment-action .uk-button-xsmall {
+    margin-right: 4px;
+}
+
+.uk-button.uk-button-xsmall {
+    padding: 0 8px;
+    font-size: 10px;
+    line-height: 20px;
+}

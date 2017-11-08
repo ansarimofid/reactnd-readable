@@ -37,7 +37,7 @@ class PostCard extends Component {
             <span className="time uk-text-small">{moment(this.props.post.timestamp,'x').fromNow()}</span>
           </div>
           <h3 className="uk-card-title uk-margin-small-top"><Link to={link}>{this.props.post.title}</Link></h3>
-          <p>{post_content}{showBtn?<a href="#" className="uk-text-primary uk-button uk-button-text">Read more</a>:''}</p>
+          <p>{post_content}{showBtn?<Link to={link} href="#" className="uk-text-primary uk-button uk-button-text">Read more</Link>:''}</p>
           <div className="post-card-action uk-flex">
             <div className="votes">
               <a onClick={(event)=> {

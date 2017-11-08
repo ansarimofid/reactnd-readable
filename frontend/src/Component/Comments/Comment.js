@@ -1,4 +1,5 @@
 import React from 'react';
+import './comment.css'
 
 export class Comment extends React.Component {
   constructor(props) {
@@ -39,13 +40,18 @@ export class Comment extends React.Component {
       )
     } else {
       return (
-        <div>
-          <p>{this.props.comment.body}</p>
-          <p>Vote: {this.props.comment.voteScore}</p>
-          <button onClick={this.onEdit.bind(this)}>Edit</button>
-          <button onClick={this.onDelete.bind(this)}>Delete</button>
-          <button onClick={this.onUpVote.bind(this)}>Up Vote</button>
-          <button onClick={this.onDownVote.bind(this)}>Down Vote</button>
+        <div className="uk-text-left comment-wrapper uk-padding-small uk-padding-remove-vertical uk-margin-medium-bottom">
+          <p>{this.props.comment.body} -- <span className="uk-text-small uk-text-capitalize uk-text-bold">{this.props.comment.author}</span></p>
+          <div className="votes">
+            <button onClick={this.onUpVote.bind(this)} href="">
+              <span is uk-icon="icon:chevron-up" className="upvote-icon"></span></button>
+            <button  onClick={this.onDownVote.bind(this)} href=""><span is uk-icon="icon:chevron-down" className="upvote-icon"></span></button>
+            <span>{this.props.comment.voteScore}</span>
+          </div>
+          <div className="comment-action">
+            <button className="uk-button uk-button-xsmall uk-button-secondary uk-button-alt" onClick={this.onEdit.bind(this)}>Edit</button>
+            <button className="uk-button uk-button-xsmall uk-button-danger uk-button-alt" onClick={this.onDelete.bind(this)}>Delete</button>
+          </div>
         </div>
       )
     }

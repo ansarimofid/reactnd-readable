@@ -1,10 +1,9 @@
 .uk-card.post-card {
     box-shadow: none;
-    /*border-bottom: 1px solid rgba(0, 0, 0, 0.12);*/
 
 }
 
-.post-card-action .uk-icon {
+.uk-icon.upvote-icon, .comments .uk-icon {
     margin-right: 4px;
 }
 

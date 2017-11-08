@@ -1,0 +1,28 @@
+
+.votes > button {
+    padding:0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.votes > button:focus {
+    outline: none;
+}
+
+.post-details-wrapper .uk-card{
+    padding-left:0;
+    padding-right:0;
+}
+
+.uk-button-secondary.uk-button-alt {
+    border: 1px solid #222;
+    color: #222;
+    background-color: white;
+}
+
+.uk-button-danger.uk-button-alt {
+    border: 1px solid #f0506e;
+    color: #f0506e;
+    background-color: white;
+}
