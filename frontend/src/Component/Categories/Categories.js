@@ -45,9 +45,6 @@ class Categories extends Component {
               return <Link to={link} className={className} onClick={(event) => {
                   this.loadCategoryPost(category.name);
               }}>{category.name}</Link>
-          // return <a onClick={(event)=> {
-          //   event.preventDefault();
-          //   this.loadCategoryPost(category.name)}} className={className} href="">{category.name}</a>
       }
       );
     }
@@ -61,7 +58,9 @@ class Categories extends Component {
       <div>
         <h3 className="uk-text-left uk-padding-small uk-padding-remove-horizontal"><span>Categories</span><hr/></h3>
         <div className="uk-flex uk-flex-wrap">
-          {this.renderCategories()}</div>
+          {this.renderCategories()}
+          {this.state.activeCategory === ''? '':<Link to={'/'} className='category-item'>Clear <a href="" is uk-icon="icon: close"/></Link>}
+          </div>
       </div>
     );
   }
