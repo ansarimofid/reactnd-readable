@@ -53,11 +53,24 @@ export class PostFull extends React.Component {
   getPost() {
     if (this.state.editing) {
       return (
-        <div>
-          <input type='text' defaultValue={this.props.post.title} id='post-edit-title'/>
-          <textarea type='text' id='post-edit-body' defaultValue={this.props.post.body}>
-                    </textarea>
-          <button onClick={this.onPostSave.bind(this)}>Save</button>
+        <div className="uk-flex">
+          <div className="uk-width-1-4@m"></div>
+          <div className="uk-width-1-2@m">
+            <h3 className="uk-text-left">Edit Post</h3>
+            <div className="uk-margin">
+              <input className="uk-input" type="text" defaultValue={this.props.post.title} id='post-edit-title' placeholder='Title'/>
+            </div>
+            <div className="uk-margin">
+              <textarea className="uk-textarea" rows="5" id='post-edit-body' defaultValue={this.props.post.body}></textarea>
+            </div>
+            {/*<input type='text' defaultValue={this.props.post.title} id='post-edit-title'/>*/}
+            {/*<textarea type='text' id='post-edit-body' defaultValue={this.props.post.body}>
+                    </textarea>*/}
+            <div className="uk-text-left">
+              <button className="uk-button uk-button-primary" onClick={this.onPostSave.bind(this)}>Save</button>
+            </div>
+          </div>
+          <div className="uk-width-1-4@m"></div>
         </div>
       )
     } else {

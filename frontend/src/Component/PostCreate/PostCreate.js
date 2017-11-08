@@ -29,7 +29,6 @@ export class PostCreate extends React.Component {
             <div className="uk-margin">
               <input className="uk-input" type="text" id='title' placeholder='Title'/>
             </div>
-            {/*<input id='title' placeholder='Title'/>*/}
             <div className="uk-margin">
               <input className="uk-input" type="text" id='author' placeholder='Author'/>
             </div>
@@ -38,20 +37,10 @@ export class PostCreate extends React.Component {
             </div>
             <div className="uk-margin">
               <select className="uk-select" id='category'>
-                {/*<option disabled="true" selected='true'> Select Category</option>*/}
                 {this.props.categories && this.props.categories.map(item => <option key={item.name}
                                                                                     value={item.name}>{item.name}</option>)}
-                {/*<option>Option 01</option>*/}
-                {/*<option>Option 02</option>*/}
               </select>
             </div>
-
-
-            {/*<input id='author' placeholder='Author'/>*/}
-            {/*<textarea id='body' placeholder='Content' />*/}
-            {/*<select id='category'>*/}
-            {/*{this.props.categories && this.props.categories.map(item => <option key={item.name} value={item.name}>{item.name}</option> )}*/}
-            {/*</select>*/}
             <div className="uk-text-left">
               <button className="uk-button-primary uk-button" onClick={this.onPostCreate.bind(this)}>Create</button>
             </div>

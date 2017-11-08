@@ -52,9 +52,9 @@ class Posts extends Component {
       <div>
         <div className="post-head">
           <h3 className="uk-text-left uk-padding-small posts-title uk-margin-remove-bottom uk-padding-remove-bottom">
-            <span>POSTS</span>
+            <span>POSTS{this.props.category ? <span> for <strong>{this.props.category}</strong></span>: ''}</span>
           </h3>
-          {this.props.category ? <span>Posts for <b>{this.props.category}</b></span>: ''}
+
           {this.getSortButtons()}
           {/*<hr/>*/}
         </div>

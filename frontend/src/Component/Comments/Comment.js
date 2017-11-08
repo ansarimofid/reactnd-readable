@@ -33,9 +33,13 @@ export class Comment extends React.Component {
   getBody() {
     if (this.state.editing) {
       return (
-        <div>
-          <textarea defaultValue={this.props.comment.body} id={this.editId}/>
-          <button onClick={this.onSave.bind(this)}>Save</button>
+        <div className="uk-text-left comment-wrapper uk-padding-small uk-padding-remove-vertical uk-margin-medium-bottom">
+          <div className="uk-margin">
+            <textarea className="uk-textarea" rows="3" defaultValue={this.props.comment.body} id={this.editId}/>
+          </div>
+          <div className="uk-text-left">
+            <button className="uk-button uk-button-primary uk-button-small" onClick={this.onSave.bind(this)}>Save</button>
+          </div>
         </div>
       )
     } else {
