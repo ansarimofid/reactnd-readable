@@ -7,6 +7,7 @@ import './Categories.css'
 import {loadCategories} from '../../Actions/categoriesAction'
 import {loadCategoryPost} from '../../Actions/postAction'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom';
 
 
 
@@ -19,6 +20,9 @@ class Categories extends Component {
 
   componentDidMount() {
     this.props.loadCategories();
+    if (this.props.category) {
+        this.setState({...this.state, activeCategory: this.props.category});
+    }
   }
 
   loadCategoryPost(category) {
@@ -37,10 +41,13 @@ class Categories extends Component {
         if (this.state.activeCategory === category.name) {
           className+='active';
         }
-
-          return <a onClick={(event)=> {
-            event.preventDefault();
-            this.loadCategoryPost(category.name)}} className={className} href="">{category.name}</a>
+        let link = '/' + category.name;
+              return <Link to={link} className={className} onClick={(event) => {
+                  this.loadCategoryPost(category.name);
+              }}>{category.name}</Link>
+          // return <a onClick={(event)=> {
+          //   event.preventDefault();
+          //   this.loadCategoryPost(category.name)}} className={className} href="">{category.name}</a>
       }
       );
     }
