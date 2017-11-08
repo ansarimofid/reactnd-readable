@@ -26,6 +26,7 @@ export default {
     return new Promise((resolve, reject) => {
       fetch('http://localhost:3001/posts/' + id, {method: 'GET', headers: myHeaders})
         .then((response) => {
+          console.log(response);
           response.json().then((post) => {
             resolve(post)
           })
@@ -107,7 +108,11 @@ export default {
   },
   voteComment: (id, option) => {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:3001/comments/' + id, {method: 'POST', headers: myHeaders, body: JSON.stringify({option})})
+      fetch('http://localhost:3001/comments/' + id, {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify({option})
+      })
         .then(response => response.json().then(comment => resolve(comment)))
     })
   },

@@ -5,7 +5,7 @@ import {
   deletePost, voteComment, votePostFull, postDeleted
 } from "../../Actions/postAction";
 import {CommentList} from "../Comments/CommentList";
-
+import PageNotFound from '../PageNotFound/PageNotFound';
 import './PostFull.css'
 import moment from 'moment'
 
@@ -171,6 +171,11 @@ export class PostFull extends React.Component {
       return (
         <div>Loading post...</div>
       )
+    }
+
+    if (!this.props.post.id) {
+      let message = 'Post with ID ' + this.state.id + ' not found.';
+      return <PageNotFound message={message} />
     }
 
     return (
