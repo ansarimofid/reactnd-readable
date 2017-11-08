@@ -35,8 +35,8 @@ class Posts extends Component {
     return (
       <div>
         {this.state.sort === 'latest' ?
-          <span>Latest<button onClick={(event) => this.setState({...this.state, sort: 'popular'})}>Popular</button></span> :
-          <span><button onClick={(event) => this.setState({...this.state, sort: 'latest'})}>Latest</button>Popular</span>
+          <div className="sort-btn-grp">Sort by: <span>LATEST</span><button className="uk-button uk-button-link" onClick={(event) => this.setState({...this.state, sort: 'popular'})}>POPULAR</button></div> :
+          <div className="sort-btn-grp">Sort by: <button className="uk-button uk-button-link" onClick={(event) => this.setState({...this.state, sort: 'latest'})}>Latest</button><span>POPULAR</span></div>
         }
       </div>
     )
@@ -45,11 +45,14 @@ class Posts extends Component {
   render() {
     return (
       <div>
-        {this.getSortButtons()}
-        <h3 className="uk-text-left uk-padding-small posts-title uk-margin-remove-bottom uk-padding-remove-bottom">
-          <span>POSTS</span>
-          <hr/>
-        </h3>
+        <div className="post-head">
+          <h3 className="uk-text-left uk-padding-small posts-title uk-margin-remove-bottom uk-padding-remove-bottom">
+            <span>POSTS</span>
+          </h3>
+          {this.getSortButtons()}
+          {/*<hr/>*/}
+        </div>
+        <hr/>
         <div className="uk-grid">{this.renderAllPost()}</div>
       </div>
     );
