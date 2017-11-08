@@ -2,12 +2,11 @@
  * Created by ansarimofid on 04/11/17.
  */
 import React, {Component} from 'react';
-import PostCards from '../PostCard/PostCard'
 import Posts from '../Posts/Posts'
 import Categories from '../Categories/Categories'
+import {connect} from 'react-redux';
 
 class Home extends Component {
-
   render() {
     return (
       <div className="uk-container">
@@ -19,10 +18,9 @@ class Home extends Component {
             <Posts category={this.props.match.params.category}/>
           </div>
         </div>
-
       </div>
     );
   }
 }
 
-export default Home;
+export default connect()(Home);

@@ -15,7 +15,7 @@ export class PostCreate extends React.Component {
         if (this.creating) {
             return;
         }
-        // this.creating = true;
+        this.creating = true;
         let title = document.getElementById('title').value;
         let author = document.getElementById('author').value;
         let body = document.getElementById('body').value;
@@ -23,11 +23,13 @@ export class PostCreate extends React.Component {
         this.props.createPost(title, author, body, category);
     }
 
+    componentWillMount() {
+      if (this.props.goToPost) {
+        this.props.history.replace('/' + this.props.post.category + '/' + this.props.post.id);
+      }
+    }
+
     render() {
-        console.log(this.props);
-        if (this.props.post) {
-            this.props.history.replace('/post/' + this.props.post.id);
-        }
         return (
             <div>
                 <input id='title' placeholder='Title'/>

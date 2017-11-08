@@ -14,9 +14,14 @@ class Posts extends Component {
   constructor(props) {
     super(props);
     this.state = {sort: 'popular'};
+    if (this.props.category) {
+      this.props.loadPostByCategory(this.props.category);
+    } else {
+      this.props.loadPost();
+    }
   }
 
-  componentWillMount() {
+  componentWillReceiveProps() {
     if (this.props.category) {
       this.props.loadPostByCategory(this.props.category);
     } else {
@@ -49,6 +54,7 @@ class Posts extends Component {
           <h3 className="uk-text-left uk-padding-small posts-title uk-margin-remove-bottom uk-padding-remove-bottom">
             <span>POSTS</span>
           </h3>
+          {this.props.category ? <span>Posts for <b>{this.props.category}</b></span>: ''}
           {this.getSortButtons()}
           {/*<hr/>*/}
         </div>

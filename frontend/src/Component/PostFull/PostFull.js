@@ -9,6 +9,8 @@ import {CommentList} from "../Comments/CommentList";
 import './PostFull.css'
 import moment from 'moment'
 
+import {Link} from 'react-router-dom';
+
 export class PostFull extends React.Component {
   constructor(props) {
     super(props);
@@ -63,7 +65,7 @@ export class PostFull extends React.Component {
           <div className="uk-width-1-4@m"></div>
           <div className="uk-width-1-2 post-details-wrapper">
             <div className="back-btn-wrapper uk-text-left">
-              <button className="uk-button uk-button-primary uk-button-small" onClick={this.props.history.goBack}><span is uk-icon="icon: chevron-left"></span>Go Back</button>
+              <Link to='/'> <button className="uk-button uk-button-primary uk-button-small"><span is uk-icon="icon: chevron-left"></span>Go Back</button></Link>
             </div>
             <div className="uk-card uk-card-default uk-card-body post-card uk-text-left uk-padding-remove-bottom">
               <div className="uk-card-badge uk-label">{this.props.post.category}</div>

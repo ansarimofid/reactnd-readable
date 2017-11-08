@@ -10,10 +10,11 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <div className="header-wrapper uk-container uk-flex">
-            <h1 className="App-title uk-margin-remove-bottom"><Link to={'/'} href="">HAPBLOG</Link></h1>
-            <Link to={'/_create'} className="uk-button new-post" href="#">New Post</Link>
+            <h1 className="App-title uk-margin-remove-bottom">
+              <Link to='/'>HAPBLOG</Link>
+            </h1>
+            <Link to='/_create' className="uk-button new-post">New Post</Link>
           </div>
-
         </header>
         <div className="body">
           <Main/>
