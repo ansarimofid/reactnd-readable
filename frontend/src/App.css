@@ -9,7 +9,7 @@
 
 .App-header {
   background-color: #1d87f0;
-  height: 35px;
+  /*height: 35px;*/
   padding: 20px;
   margin-bottom: 40px;
   color: #fff;
@@ -32,6 +32,18 @@
 
 .App-intro {
   font-size: large;
+}
+
+.header-wrapper {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.uk-button.new-post {
+    background-color: white;
+    color: #0f6ecd;
+    height: 40px;
+    line-height: 40px;
 }
 
 @keyframes App-logo-spin {

@@ -9,7 +9,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-            <h1 className="App-title">HAPBLOG</h1>
+          <div className="header-wrapper uk-container uk-flex">
+            <h1 className="App-title uk-margin-remove-bottom"><Link to={'/'} href="">HAPBLOG</Link></h1>
+            <Link to={'/_create'} className="uk-button new-post" href="#">New Post</Link>
+          </div>
+
         </header>
         <div className="body">
           <Main/>
