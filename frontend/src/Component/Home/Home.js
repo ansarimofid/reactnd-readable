@@ -13,10 +13,10 @@ class Home extends Component {
       <div className="uk-container">
         <div className="uk-grid">
           <div className="uk-width-1-4@m">
-            <Categories/>
+            <Categories category={this.props.match.params.category}/>
           </div>
           <div className="uk-width-3-4@m posts">
-            <Posts/>
+            <Posts category={this.props.match.params.category}/>
           </div>
         </div>
 

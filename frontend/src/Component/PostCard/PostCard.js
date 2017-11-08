@@ -6,6 +6,7 @@ import moment from 'moment'
 import './PostCard.css'
 import {votePost} from '../../Actions/postAction'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom';
 
 
 class PostCard extends Component {
@@ -24,7 +25,7 @@ class PostCard extends Component {
       post_content = post_content.substring(0, MAX_CONTENT_LENGTH)+'... ';
       showBtn = true;
     }
-
+    let link = '/' + this.props.post.category + '/' + this.props.post.id;
     return (
       <div className="uk-width-1-1\@s">
         <div className="uk-card uk-card-default uk-card-body post-card uk-text-left uk-padding-remove-bottom">
@@ -35,7 +36,7 @@ class PostCard extends Component {
             <span className="uk-text-small"> | </span>
             <span className="time uk-text-small">{moment(this.props.post.timestamp,'x').fromNow()}</span>
           </div>
-          <h3 className="uk-card-title uk-margin-small-top"><a href="!#">{this.props.post.title}</a></h3>
+          <h3 className="uk-card-title uk-margin-small-top"><Link to={link}>{this.props.post.title}</Link></h3>
           <p>{post_content}{showBtn?<a href="#" className="uk-text-primary uk-button uk-button-text">Read more</a>:''}</p>
           <div className="post-card-action uk-flex">
             <div className="votes">
